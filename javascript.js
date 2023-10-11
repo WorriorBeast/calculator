@@ -1,7 +1,7 @@
 let firstNumber = null;
 let operator = null;
 let secondNumber = null;
-let displayValue = null;
+let displayValue = 0;
 
 const buttons = document.querySelectorAll('button');
 
@@ -40,15 +40,27 @@ function clickButton() {
     for (i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function() {
             if (this.classList.contains('number')) {
-                updateDisplay(this.value);
+                concatNumber(this.value);
+                updateDisplay();
             }
         })
     }
 }
 clickButton();
 
-function updateDisplay(displayValue) {
+function updateDisplay() {
     const display = document.querySelector('.display');
     display.textContent = displayValue;
+
+    if (displayValue.length > 8) display.textContent = displayValue.slice(0,8);
 }
-updateDisplay(0);
+updateDisplay(displayValue);
+
+function concatNumber(number) {
+    if (displayValue == 0) {
+        displayValue = number;
+        
+    } else if (displayValue !== 0) {
+        displayValue += number;
+    }
+}
