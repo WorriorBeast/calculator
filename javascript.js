@@ -42,6 +42,8 @@ function clickButton() {
             if (this.classList.contains('number')) {
                 concatNumber(this.value);
                 updateDisplay();
+            } else if (this.classList.contains('operator')) {
+                console.log(getOperator(this.value));
             }
         })
     }
@@ -63,4 +65,8 @@ function concatNumber(number) {
     } else if (displayValue !== 0) {
         displayValue += number;
     }
+}
+
+function getOperator(operator) {
+    return operator;
 }
