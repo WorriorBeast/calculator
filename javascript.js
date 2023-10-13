@@ -1,9 +1,20 @@
-let firstNumber = null;
-let operator = null;
-let secondNumber = null;
-let displayValue = 0;
+let firstNumber = '';
+let operator = '';
+let secondNumber = '';
+let displayValue = '';
 
-const buttons = document.querySelectorAll('button');
+const display = document.querySelector('.display');
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+
+numbers.forEach((number) => number.addEventListener('click', function() {
+    numberInput(this.value);
+    if (displayValue.length < 9) display.textContent = displayValue;
+}));
+
+operators.forEach((op) => op.addEventListener('click', function() {
+    operatorInput(this.value);
+}));
 
 function add(firstNumber, secondNumber) {
     return firstNumber + secondNumber;
@@ -21,52 +32,33 @@ function divide(firstNumber, secondNumber) {
     return firstNumber / secondNumber;
 }
 
-function operate(operator, firstNumber, firstNumber) {
-    if (operator === '+') {
-        add(firstNumber, secondNumber);
+function numberInput(num) {
+    displayValue += num;
+    firstNumber = displayValue.slice(0,8);
+}
 
-    } else if (operator === '-') {
-        subtract(firstNumber, secondNumber);
+function operatorInput(op) {
+    operator = op;
+    secondNumber = firstNumber;
+    firstNumber = '';
+}
 
-    } else if (operator = '*') {
-        multiply(firstNumber, secondNumber);
+function operate() {
+    switch (operator) {
+        case '+':
+            add(firstNumber, secondNumber);
+            break;
 
-    } else if (operator ='/') {
-        divide(firstNumber, secondNumber);
+        case '-':
+            subtract(firstNumber,secondNumber);
+            break;
+
+        case '*':
+            multiply(firstNumber, secondNumber);
+            break;
+
+        case '/':
+            divide(firstNumber, secondNumber);
+            break;
     }
-}
-
-function clickButton() {
-    for (i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('click', function() {
-            if (this.classList.contains('number')) {
-                concatNumber(this.value);
-                updateDisplay();
-            } else if (this.classList.contains('operator')) {
-                console.log(getOperator(this.value));
-            }
-        })
-    }
-}
-clickButton();
-
-function updateDisplay() {
-    const display = document.querySelector('.display');
-    display.textContent = displayValue;
-
-    if (displayValue.length > 8) display.textContent = displayValue.slice(0,8);
-}
-updateDisplay(displayValue);
-
-function concatNumber(number) {
-    if (displayValue == 0) {
-        displayValue = number;
-        
-    } else if (displayValue !== 0) {
-        displayValue += number;
-    }
-}
-
-function getOperator(operator) {
-    return operator;
 }
