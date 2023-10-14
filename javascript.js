@@ -13,7 +13,16 @@ numbers.forEach((number) => number.addEventListener('click', function() {
 }));
 
 operators.forEach((op) => op.addEventListener('click', function() {
+    if (operator !== '') operate();
     operatorInput(this.value);
+
+    if (secondNumber.length > 8) {
+        secondNumber = Number(secondNumber);
+        display.textContent = secondNumber.toPrecision(4);
+        secondNumber = secondNumber.toString();
+    } else {
+        display.textContent = secondNumber;
+    }
 }));
 
 equal.addEventListener('click', function() {
