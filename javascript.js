@@ -54,4 +54,5 @@ function operate() {
             secondNumber /= firstNumber;
             break;
     }
+    firstNumber = secondNumber.toString();
 }
