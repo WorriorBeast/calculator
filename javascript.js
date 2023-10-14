@@ -18,7 +18,14 @@ operators.forEach((op) => op.addEventListener('click', function() {
 
 equal.addEventListener('click', function() {
     operate();
-    display.textContent = secondNumber;
+    
+    if (secondNumber.length > 8) {
+        secondNumber = Number(secondNumber);
+        display.textContent = secondNumber.toPrecision(4);
+        secondNumber = secondNumber.toString();
+    } else {
+        display.textContent = secondNumber;
+    }
 })
 
 function numberInput(num) {
@@ -55,4 +62,10 @@ function operate() {
             break;
     }
     firstNumber = secondNumber.toString();
+    secondNumber = roundNum(secondNumber);
+    secondNumber = secondNumber.toString();
+}
+
+function roundNum() {
+    return Math.round(secondNumber * 100) / 100;
 }
