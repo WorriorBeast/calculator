@@ -19,7 +19,7 @@ operators.forEach((op) => op.addEventListener('click', function() {
 
     if (secondNumber.length > 8) {
         secondNumber = Number(secondNumber);
-        display.textContent = secondNumber.toPrecision(4);
+        display.textContent = secondNumber.toPrecision(3);
         secondNumber = secondNumber.toString();
     } else {
         display.textContent = secondNumber;
