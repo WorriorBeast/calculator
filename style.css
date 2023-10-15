@@ -49,11 +49,11 @@ button {
     background-color: rgba(12, 237, 203, 0.254);;
 }
 
-button.clear, button.operator, div.display {
+button.clear, button.operator, div.display, .decimal {
     color: rgb(12, 237, 203)
 }
 
-.display, .number, .clear, .blank {
+.display, .number, .clear, .blank, .decimal {
     background-color: rgb(46, 55, 68);
 }
 
