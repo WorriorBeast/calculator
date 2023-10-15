@@ -6,6 +6,7 @@ const display = document.querySelector('.display');
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equal');
+const clear = document.querySelector('.clear');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
     numberInput(this.value);
@@ -35,6 +36,14 @@ equal.addEventListener('click', function() {
     } else {
         display.textContent = secondNumber;
     }
+})
+
+clear.addEventListener('click', function() {
+    firstNumber = '';
+    secondNumber = ''; 
+    operator = '';
+
+    display.textContent = 0;
 })
 
 function numberInput(num) {
