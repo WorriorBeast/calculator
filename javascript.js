@@ -7,6 +7,7 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
+const decimal = document.querySelector('.decimal');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
     numberInput(this.value);
@@ -45,6 +46,12 @@ clear.addEventListener('click', function() {
 
     display.textContent = 0;
 })
+
+decimal.addEventListener('click', function()  {
+    if (!firstNumber.includes('.')) firstNumber += '.';
+    
+    display.textContent = firstNumber;
+});
 
 function numberInput(num) {
     if (firstNumber.length < 8) {
