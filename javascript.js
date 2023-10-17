@@ -28,14 +28,17 @@ operators.forEach((op) => op.addEventListener('click', function() {
 }));
 
 equal.addEventListener('click', function() {
-    operate();
+    if (firstNumber !== '' && secondNumber !== '') {
+        operate();
     
-    if (secondNumber.length > 8) {
-        secondNumber = Number(secondNumber);
-        display.textContent = secondNumber.toPrecision(3);
-        secondNumber = secondNumber.toString();
-    } else {
-        display.textContent = secondNumber;
+        if (secondNumber.length > 8) {
+            secondNumber = Number(secondNumber);
+            display.textContent = secondNumber.toPrecision(3);
+            secondNumber = secondNumber.toString();
+        } else {
+            display.textContent = secondNumber;
+        }
+        operator = '';
     }
 })
 
