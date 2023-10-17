@@ -18,10 +18,14 @@ operators.forEach((op) => op.addEventListener('click', function() {
     if (operator !== '') operate();
     operatorInput(this.value);
 
-    if (secondNumber.length > 8) {
+    if (secondNumber.length > 8 && typeof secondNumber === typeof firstNumber) {
         secondNumber = Number(secondNumber);
         display.textContent = secondNumber.toPrecision(3);
         secondNumber = secondNumber.toString();
+    } else if (secondNumber === 'HAHA') {
+        display.textContent = secondNumber;
+        firstNumber = '';
+        secondNumber = '';
     } else {
         display.textContent = secondNumber;
     }
@@ -31,16 +35,20 @@ equal.addEventListener('click', function() {
     if (firstNumber !== '' && secondNumber !== '') {
         operate();
     
-        if (secondNumber.length > 8) {
+        if (secondNumber.length > 8 && typeof secondNumber === typeof firstNumber) {
             secondNumber = Number(secondNumber);
             display.textContent = secondNumber.toPrecision(3);
             secondNumber = secondNumber.toString();
+        } else if (secondNumber === 'HAHA') {
+            display.textContent = secondNumber;
+            firstNumber = '';
+            secondNumber = '';
         } else {
             display.textContent = secondNumber;
         }
         operator = '';
     }
-})
+});
 
 clear.addEventListener('click', function() {
     firstNumber = '';
@@ -48,7 +56,7 @@ clear.addEventListener('click', function() {
     operator = '';
 
     display.textContent = 0;
-})
+});
 
 decimal.addEventListener('click', function()  {
     if (!firstNumber.includes('.')) firstNumber += '.';
@@ -64,7 +72,11 @@ function numberInput(num) {
 
 function operatorInput(op) {
     operator = op;
-    secondNumber = firstNumber;
+    if (secondNumber === 'HAHA'){
+        secondNumber;
+    } else {
+        secondNumber = firstNumber;
+    }
     firstNumber = '';
 }
 
@@ -86,12 +98,19 @@ function operate() {
             break;
 
         case '/':
-            secondNumber /= firstNumber;
+            if (firstNumber === 0) {
+                secondNumber = 'HAHA';
+            } else {
+                secondNumber /= firstNumber;
+            }
             break;
     }
-    firstNumber = secondNumber.toString();
-    secondNumber = roundNum(secondNumber);
-    secondNumber = secondNumber.toString();
+    
+    if (typeof secondNumber === typeof firstNumber) {
+        firstNumber = secondNumber.toString();
+        secondNumber = roundNum(secondNumber);
+        secondNumber = secondNumber.toString();
+    }
 }
 
 function roundNum() {
