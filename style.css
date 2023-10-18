@@ -49,11 +49,11 @@ button {
     background-color: rgba(12, 237, 203, 0.254);;
 }
 
-button.clear, button.operator, div.display, .decimal {
+button.clear, button.operator, div.display, .decimal, .x-portion {
     color: rgb(12, 237, 203)
 }
 
-.display, .number, .clear, .blank, .decimal {
+.display, .number, .clear, .blank, .decimal, .backspace {
     background-color: rgb(46, 55, 68);
 }
 
@@ -65,4 +65,39 @@ button.right-bottom-corner {
     border-bottom-right-radius: 20px;
     background-color: rgb(12, 237, 203);
     color: white;
+}
+
+.x-portion {
+    border: 2px solid rgb(12, 237, 203);
+    border-radius: 3.5px;
+    border-left: none;
+    font-size: 28px;
+    padding: 2px 5px 2px 0;
+    margin-left: 1.3px;
+}
+
+.forward-slash, .back-slash {
+    height: 28px;
+    border: 1px solid rgb(12, 237, 203);
+}
+
+.forward-slash {
+    transform: rotate(50deg);
+    margin: 0 7px -15px 3px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 24px;
+}
+
+.back-slash {
+    transform: rotate(130deg);
+    margin-right: 7px;
+    margin-left: 3px;
+    position: relative;
+    bottom: -9px;
+    border-radius: 20px;
+}
+
+.front-icon {
+    position: relative;
 }
