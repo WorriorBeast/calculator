@@ -8,6 +8,7 @@ const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
 const decimal = document.querySelector('.decimal');
+const backspace = document.querySelector('.backspace');
 
 numbers.forEach((number) => number.addEventListener('click', function() {
     numberInput(this.value);
@@ -63,6 +64,17 @@ decimal.addEventListener('click', function()  {
     
     display.textContent = firstNumber;
 });
+
+backspace.addEventListener('click', function() {
+    if (firstNumber !== '') {
+        let tempSplit = firstNumber.split('');
+        tempSplit.pop('');
+        firstNumber = tempSplit.join('');
+        display.textContent = firstNumber;
+
+        if (firstNumber.length === 0) display.textContent = 0;
+    }
+})
 
 function numberInput(num) {
     if (firstNumber.length < 8) {
