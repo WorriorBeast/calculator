@@ -128,3 +128,8 @@ function operate() {
 function roundNum() {
     return Math.round(secondNumber * 100) / 100;
 }
+
+window.addEventListener('keydown', function(e) {
+    const key = document.querySelector(`button[data-key='${e.key}']`);
+    key.click();
+});
