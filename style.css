@@ -46,7 +46,7 @@ button {
 }
 
 .operator {
-    background-color: rgba(12, 237, 203, 0.254);;
+    background-color: rgba(12, 237, 203, 0.254);
 }
 
 button.clear, button.operator, div.display, .decimal, .x-portion {
@@ -100,4 +100,9 @@ button.right-bottom-corner {
 
 .front-icon {
     position: relative;
+}
+
+.number:hover, .operator:hover, .clear:hover, 
+.decimal:hover, .backspace:hover, .equal:hover {
+    background-color: rgb(49, 79, 146);
 }
